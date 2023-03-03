@@ -1,10 +1,10 @@
 import express from 'express';
 import rootRouter from './api/root';
 import docs from './docs/index';
-import { dbConnection } from './models/index';
+// import { dbConnection } from './models/index';
 
 const app = express();
-dbConnection;
+// dbConnection;
 
 // built-in middleware to handle urlencoded form data
 app.use(express.json());

@@ -1,0 +1,33 @@
+version : '3.8'
+
+services:
+  node_backend:
+   container_name: node_container
+   image: ecommerce-node-backend:0.0.2
+   build:
+    context: .
+   ports:
+    - "4000:4000"
+   environment:
+    PORT: 4000
+   depends_on:
+    - node_psql_db
+    
+  node_psql_db:
+   container_name: node_psql_db
+   image: "postgres:15"
+   ports:
+     - "5432:5432"
+   environment:
+     POSTGRES_USER: postgres
+     POSTGRES_PASSWORD: postgres
+     POSTGRES_DB: ecommerce_db
+   volumes :
+     - ./nps_data:/var/lib/postgresql/data
+volumes:
+  nps_data: {}
+
+
+
+
+ 
