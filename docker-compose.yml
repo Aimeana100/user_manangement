@@ -3,13 +3,20 @@ version : '3.8'
 services:
   node_backend:
    container_name: node_container
-   image: ecommerce-node-backend:0.0.2
+   image: ecommerce-node-backend:0.0.1
    build:
     context: .
    ports:
     - "4000:4000"
    environment:
     PORT: 4000
+    DEV_DATABASE_URL: postgres://postgres:postgres@node_psql_db:5432/ecommerce_db
+    DB_USER: postgres
+    DB_PASSWORD: postgres
+    DB_NAME: ecommerce_db
+    DB_HOST: node_psql_db
+    DB_PORT: 5432
+
    depends_on:
     - node_psql_db
     
@@ -17,13 +24,13 @@ services:
    container_name: node_psql_db
    image: "postgres:15"
    ports:
-     - "5432:5432"
+     - "5433:5432"
    environment:
      POSTGRES_USER: postgres
      POSTGRES_PASSWORD: postgres
      POSTGRES_DB: ecommerce_db
    volumes :
-     - ./nps_data:/var/lib/postgresql/data
+     - nps_data:/var/lib/postgresql/data
 volumes:
   nps_data: {}
 

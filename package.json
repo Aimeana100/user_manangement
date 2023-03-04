@@ -7,11 +7,11 @@
     "build": "babel src -d dist",
     "start": "nodemon dist/index.js",
     "dev": "nodemon --exec babel-node src/index.js",
-    "migrate:undo": "npx sequelize-cli db:migrate:undo",
-    "migrate": "npx sequelize-cli db:migrate",
-    "make:migration":"npx sequelize-cli model:generate --name users --attributes firstName:string,lastName:string,email:string",
+    "migrate:undo": "npx sequelize-cli db:migrate:undo:all",
+    "migrate": "npm run migrate:undo && npx sequelize-cli db:migrate",
+    "make:migration":"npx sequelize-cli model:generate --force --name users --attributes firstName:string,lastName:string,email:string",
     "generate:seed":"npx sequelize-cli seed:generate --name demo-user",
-    "seed":"npm run migrate:undo && npm run migrate && npx sequelize-cli db:seed:all",
+    "seed":"npm run migrate && npx sequelize-cli db:seed:all",
     "lint:fix": "eslint src --fix --cache"
   },
   "repository": {
