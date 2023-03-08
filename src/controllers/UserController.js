@@ -3,7 +3,7 @@ import { users } from '../models';
 const allUsers = async (req, res) => {
     console.log(users);
     const data = await users.findAll({});
-    res.status(200).json(data);
+    res.status(200).json({status: "ok", data });
 }
  
 const addUser = async (req, res) => {

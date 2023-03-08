@@ -12,7 +12,12 @@
     "make:migration":"npx sequelize-cli model:generate --force --name users --attributes firstName:string,lastName:string,email:string",
     "generate:seed":"npx sequelize-cli seed:generate --name demo-user",
     "seed":"npm run migrate && npx sequelize-cli db:seed:all",
-    "lint:fix": "eslint src --fix --cache"
+    "lint:fix": "eslint src --fix --cache",
+    "docker:compose:up": "docker-compose up -d",
+    "docker:compose:down": "docker-compose down",
+    "docker:compose:clean": "docker-compose down --volumes --rmi all --remove-orphans"
+
+
   },
   "repository": {
     "type": "git",
